@@ -1,0 +1,178 @@
+  {% load static %}
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+      <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Briem+Hand:wght@100..900&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Jersey+10&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Briem+Hand:wght@100..900&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Jersey+10&family=Lobster&family=Monoton&family=Orbitron:wght@400..900&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+      <title>Inventory Management App</title>
+      <style>
+           #gh {
+              font-family: "Monoton", sans-serif;
+              font-weight: 400;
+              font-style: normal;
+            }
+          .top-bar{
+              background-color: #000000;
+              color: #fff;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 10px 20px;
+              height: 60px;
+            }
+
+            .brand{
+              font-size: 2em;
+              padding-left: 20px;
+            }
+
+            .lo{
+              font-size: 20px;
+              padding-left: 20px;
+              color: wheat;
+              text-decoration: none;
+            }
+            nav ul{
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              font-size: 15px;
+              padding-right: 40px;
+            }
+
+            nav ul li{
+              display: inline;
+              margin-right: 20px;
+            }
+
+            nav ul li a{
+              color: #fff;
+              text-decoration:none;
+              font-size: 1.2em;
+            }
+
+            nav ul li a:hover{
+              color: #6ec490;
+              text-decoration: none;
+            }
+        body{
+          background-color: black;
+          font-family: "Merriweather", sans-serif;
+        }
+        #hg{
+          font-size: medium;
+        }
+        #gh{
+          font-size: 32px;
+        }
+        #productTableBody{
+          padding-bottom: 50px;
+        }
+        #hjg{
+          right: 0;
+        }
+          .table-container {
+              max-width: 400px; 
+              margin: 0 auto; 
+          }
+          .billb{
+            padding-left: 620px;
+          }
+          .bill{
+            width: 500px;
+            background: url('{% static "images/nb.jpeg" %}');background-size: cover;
+            border-radius: 10px;
+          }
+          
+      </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="brand">T-Mart</div>
+      <nav>
+        <ul>
+          <li><a href="{% url 'mn' %}"> Home</a></li>
+          <li><a href="{% url 'ct' %}"> Categories</a></li>
+          <li><a href="{% url 'pd' %}"> Products</a></li>
+          <li><a href="{% url 'rgr' %}"> Cashiers</a></li>
+          <li><a href="{% url 'list' %}"> List</a></li>
+          <li><a href="{% url 'cart' %}"> Cart</a></li>
+          <li><a href="{% url 'hist' %}"> Log History</a></li>
+        </ul>
+      </nav>
+      <div class="lo"><a href="{% url 'ln' %}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+    </div>
+        <br>
+        <div class="billb">
+          <div class="bill">
+            <div id="pdf-content">
+            <h2 id="gh"class="text-center">-----------T-MART-----------</h2>
+          <h5 id="hg"class="text-center">Mangalagiri -Mandal, Neeru Konda, Amaravati, <br> Andhra Pradesh 522502</h5><br><br>
+          <div class="table-container">
+          <table class="table table-hover table-sm">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+                {% for product in list %}
+                <tr>
+                        <td>{{ product.pname }}</td>
+                        <td class="{% if product.quantity < 10 %}low-quantity{% elif product.quantity >= 10 and product.quantity < 20 %}medium-quantity{% else %}high-quantity{% endif %}">
+                            <span>{{ product.quantity }}</span>
+                        </td>
+                        <td>{{ product.price }}</td>
+                        
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        <div class="row justify-content-between">
+          <div class="col-auto">
+          </div>
+          <div class="col-auto">
+              <hr>
+              <p>Price: {{price}}</p>
+              <p>GST Price: {{gst}}</p>
+              <p>Total : {{total}}</p>
+          </div>
+      </div>
+      <div class="row justify-content-center">
+        <h4>Thank You!! Visit Again!!</h4><br>
+        </div></div></div>
+      <div class="row justify-content-center">
+        <a id="hjg"class="btn btn-outline-success" onClick={generatePDF(event)}>Print</a>
+          </div>
+        
+  
+  <script>
+    function generatePDF(event) {
+        event.preventDefault();
+        const element = document.getElementById('pdf-content');
+        const opt = {
+            margin:       10,
+            filename:     'bill.pdf',
+            image:        { type: 'jpeg', quality: 1 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'mm', format: 'a5', orientation: 'portrait' }
+        };
+    
+        html2pdf().from(element).set(opt).save();
+        alert("Click OK to Download Bill");
+        window.location.href = "{% url 'but' %}";
+    
+    }
+        </script>
+  </body>

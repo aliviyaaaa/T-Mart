@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="icon" type="text/css" href="{% static 'images/warehouse.png' %}">
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <style>
+        body {
+            background: url('{% static "images/bg10.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            font-family: "Merriweather", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .bg {
+            background-color: #365e8a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: inline-block; 
+            margin-bottom: 5px; 
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-check-input {
+            margin-right: 10px;
+            position: relative;
+            top: 1px; 
+        }
+
+        .btn {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 49%; 
+        }
+
+        .btn-danger {
+            background-color: #c3404d;
+            color: #fff;
+            border: 1px solid #dc3545;
+        }
+
+        .btn-success {
+            background-color: #36904b;
+            color: #fff;
+            border: 1px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="card-body">
+        <h4 class="bg">Select Your Role</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" id="admin" value="admin">
+                    <label class="form-check-label" for="admin">Admin</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" id="cashier" value="cashier">
+                    <label class="form-check-label" for="cashier">Cashier</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="reset" class="btn btn-danger">Clear</button>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+        {% if messages %}
+            <script>
+                alert("{% for message in messages %}{{ message }}\n{% endfor %}");
+            </script>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

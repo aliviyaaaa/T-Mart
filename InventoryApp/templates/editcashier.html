@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <title>Cashier Update</title>
+</head>
+<style>
+    body{
+        background: url('{% static "images/river.jpg" %}');background-size: cover;
+    }
+    .container.mt-12{
+        border-radius: 20px;
+        padding-top: 90px;
+        padding-left: 50px;
+    }
+</style>
+<body>
+    <div class="container mt-12">
+        <div class="card col-md-10 mx-auto shadow-lg p-3">
+            <div>
+                <h4>Cashier Update</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="cusername" class="form-control my-2" value="{{ cashier.cusername }}">
+                    <input type="text" name="cname" class="form-control my-2" value="{{ cashier.cname }}">
+                    <input type="date" name="cdate" class="form-control my-2" value="{{ cashier.cdate|date:'Y-m-d' }}">
+
+                    <input type="email" name="cemail" class="form-control my-2" value="{{ cashier.cemail }}">
+                    <input type="tel" name="cphone" class="form-control my-2" value="{{ cashier.cphone }}">
+                    <input type="text" name="caadhar" class="form-control my-2" value="{{ cashier.caadhar }}">
+                    <input type="password" name="cpassword" class="form-control my-2" value="{{ cashier.cpassword }}">
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <a href="{% url 'rgr' %}" class="form-control btn btn-outline-info">Back</a>
+                        </div>
+                        
+                        <div class="col">
+                            <input type="submit" value="Update" class="form-control btn btn-outline-success">
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

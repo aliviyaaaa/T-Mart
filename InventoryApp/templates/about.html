@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <script src="https://kit.fontawesome.com/7297796a96.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/supermaket.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Jersey+10&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    .top-bar{
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: 80px;
+}
+
+.brand{
+  font-size: 2.5em;
+  padding-left: 40px;
+}
+
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: larger;
+  padding-right: 80px;
+}
+
+nav ul li{
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a{
+  color: #fff;
+  text-decoration:wavy;
+  font-size: 1.2em;
+}
+
+nav ul li a:hover{
+  color: #6ec490;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Belanosima', sans-serif;
+  background-image: url();
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #0e2035;
+    font-style: bold;
+}
+
+p {
+    line-height: 1.6;
+}
+.au{
+    background-image: url("{% static 'images/green.jpeg' %}"); 
+  padding: 20px; 
+  height: 100px;
+  width: 1479px;
+  display: flex;
+  align-items: center; 
+}
+h1{
+    font-family: "Roboto-bold", serif;
+  font-weight: 180;
+  font-size: 70px;
+  padding-left: 650px;
+  top: 0;
+}
+
+
+</style>
+
+<body>
+    <div class="top-bar">
+        <div class="brand">T-Mart</div>
+        <nav>
+            <ul>
+              <li><a href=""><i class="fas fa-home"></i></a> Home  </li>
+              <li><a href="{% url 'ab' %}"><i class="fas fa-info-circle"></i></a> About us  </li>
+              <li><a href="{% url 'lgn' %}"><i class="fa-solid fa-right-to-bracket"></i></a> Account  </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="au">
+        <div id="ss">
+            <h1>About Us</h1>
+            <p></p>
+        </div>
+    </div>
+    <div class="container">
+        <section>
+            <h2>What is T-MART?</h2>
+            <p>T-MART.com  is online food and grocery store. With over 18,000 products and over a 1000 brands in our catalogue you will find everything you are looking for. Right from fresh Fruits and Vegetables, Rice and Dals, Spices and Seasonings to Packaged products, Beverages, Personal care products, Meats – we have it all.
+                Choose from a wide range of options in every category, exclusively handpicked to help you find the best quality available at the lowest prices.</p>
+        </section>
+        <section>
+            <h2>Why should I use T-MART?</h2>
+            <p>T-MART.com allows you to walk away from the drudgery of grocery shopping and welcome an easy relaxed way of browsing and shopping for groceries. Discover new products and shop for all your food and grocery needs from the comfort of your home or office. No more getting stuck in traffic jams, paying for parking, standing in long queues and carrying heavy bags – get everything you need, when you need, right at your doorstep. Food shopping online is now easy as every product on your monthly shopping list, is now available online at T-MART.com, best online grocery store.</p>
+        </section>
+        <section>
+            <h2>Where do we operate?</h2>
+            <p> We currently offer our services in Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Noida, Mysore, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore and Chandigarh Tricity city limits.</p>
+        </section>
+    </div>
+</body>
+</html>

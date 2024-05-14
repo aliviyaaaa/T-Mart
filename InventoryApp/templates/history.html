@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <title>Inventory Management App</title>
+</head>
+<style>
+    .top-bar{
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: 60px;
+}
+
+.brand{
+  font-size: 2em;
+  padding-left: 20px;
+}
+
+.lo{
+  font-size: 20px;
+  padding-left: 20px;
+  color: wheat;
+  text-decoration: none;
+}
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  padding-right: 40px;
+}
+
+nav ul li{
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a{
+  color: #fff;
+  text-decoration:none;
+  font-size: 1.2em;
+}
+
+nav ul li a:hover{
+  color: #6ec490;
+  text-decoration: none;
+}
+
+</style>
+<body>
+  <div class="top-bar">
+    <div class="brand">T-Mart</div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'mn' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="{% url 'ct' %}"><i class="fa-solid fa-display"></i>Categories</a></li>
+        <li><a href="{% url 'pd' %}">Products</a></li>
+        <li><a href="{% url 'rgr' %}"><i class="fa-regular fa-user"></i> Cashiers</a></li>
+        <li><a href="{% url 'list' %}"><i class="fa-regular fa-user"></i> List</a></li>
+        <li><a href="{% url 'cart' %}"><i class="fa-regular fa-user"></i> Cart</a></li>
+        <li><a href="{% url 'hist' %}"><i class="fa-regular fa-user"></i> Log History</a></li>
+      </ul>
+    </nav>
+    <div class="lo"><a href="{% url 'ln' %}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+  </div>
+      <br>
+      <div>
+      <table class="table table-hover ">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            {% for product in list %}
+            <tr>
+                <td>{{ product.pname }}</td>
+                <td>{{ product.price }}</td>
+                <td class="{% if product.quantity < 10 %}low-quantity{% elif product.quantity >= 10 and product.quantity < 20 %}medium-quantity{% else %}high-quantity{% endif %}">
+                    <span>{{ product.quantity }}</span>
+                </td>
+                    
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+</div>
+</div>
+</div>
+</body>

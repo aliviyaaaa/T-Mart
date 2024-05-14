@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="icon" href="{% static 'images/warehouse.png' %}">
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <title>Category List</title>
+</head>
+<style>
+  .top-bar{
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: 60px;
+}
+
+.brand{
+  font-size: 2em;
+  padding-left: 20px;
+}
+
+.lo{
+  font-size: 20px;
+  padding-left: 20px;
+  color: wheat;
+  text-decoration: none;
+}
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  padding-right: 40px;
+}
+
+nav ul li{
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a{
+  color: #fff;
+  text-decoration:none;
+  font-size: 1.2em;
+}
+
+nav ul li a:hover{
+  color: #6ec490;
+  text-decoration: none;
+}
+
+  body{
+    background: url('{% static "images/cut.jpg" %}');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .card-body{
+    background-color: rgb(29, 28, 28);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+
+  #ww{
+    background-color: beige;
+  }
+
+  .btn-outline-danger{
+    background-color: rgb(189, 83, 83);
+    color: black;
+    border-color: black;
+    cursor: pointer;
+  }
+
+  .btn-outline-success{
+    background-color: rgb(85, 171, 102);
+    color: black;
+    border-color: black;
+    cursor: pointer;
+  }
+
+  .btn-outline-primary{
+    background-color: rgb(85, 171, 102);
+    color: black;
+    border-color: black;
+    cursor: pointer;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #457944; 
+    color: #fff; 
+  }
+
+  .card-title{
+    color: bisque;
+  }
+
+</style>
+<body>
+  <div class="top-bar">
+    <div class="brand">T-Mart</div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'mn' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="{% url 'ct' %}"><i class="fa-solid fa-display"></i>Categories</a></li>
+        <li><a href="{% url 'pd' %}">Products</a></li>
+        <li><a href="{% url 'rgr' %}"><i class="fa-regular fa-user"></i> Cashiers</a></li>
+        <li><a href="{% url 'list' %}"><i class="fa-regular fa-user"></i> List</a></li>
+        <li><a href="{% url 'cart' %}"><i class="fa-regular fa-user"></i> Cart</a></li>
+        <li><a href="{% url 'hist' %}"><i class="fa-regular fa-user"></i> Log History</a></li>
+      </ul>
+    </nav>
+    <div class="lo"><a href="{% url 'ln' %}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
+  </div>
+  <br>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card shadow-lg mb-4">
+                    <div class="card-body">
+                        <h4 id="ww" class="text-center text-black p-2 border rounded">Add New Category</h4>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="text" name="Text" placeholder="Name of Category" class="form-control my-2">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="reset" value="Clear" class="btn btn-outline-danger">
+                                </div>
+                                <div class="col">
+                                    <input type="submit" value="Create" class="btn btn-outline-success">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Category Cards Display -->
+                <div class="row">
+                    {% for category in Category %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ category.name }}</h5>
+                                <div class="row">
+                                    <div class="col">
+                                      <a href="{% url 'viewcat' category.id %}" class="btn btn-outline-success form-control">View</a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{% url 'cted' category.id %}" class="btn btn-outline-primary form-control">Update</a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{% url 'ctdlt' category.id %}" class="btn btn-outline-danger form-control">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col">
+                        <p>No categories available.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

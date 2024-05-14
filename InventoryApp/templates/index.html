@@ -1,0 +1,492 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Management System</title>
+    <script src="https://kit.fontawesome.com/7297796a96.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/supermaket.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+.top-bar{
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: 80px;
+}
+
+.brand{
+  font-size: 2.5em;
+  padding-left: 40px;
+}
+
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: larger;
+  padding-right: 80px;
+}
+
+nav ul li{
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a{
+  color: #fff;
+  text-decoration:wavy;
+  font-size: 1.2em;
+}
+
+nav ul li a:hover{
+  color: #6ec490;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Belanosima', sans-serif;
+}
+
+.top-part{
+  background-color: rgb(69, 115, 69);
+  padding: 20px; 
+  height: 600px;
+  /* width: 1479px; */
+  display: flex;
+  align-items: center; 
+}
+
+.fru{
+  position: absolute;
+  right: 20px; 
+  padding: 1px; 
+  padding-right: 100px;
+  padding-bottom: 35px;
+}
+.tp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+  font-size: 80px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+h2{
+  font-family: "Merriweather", serif;
+  font-weight: 180;
+  font-size: 30px;
+  padding-left: 15px;
+}
+h3{
+  font-size: 60px;
+  text-align: center;
+  padding-bottom: 390px; 
+}
+
+p{
+  font-family: "Merriweather", serif;
+  font-size: 14px;
+  color: rgb(223, 221, 139);
+}
+
+h5{
+  font-family: "Merriweather", serif;
+  font-weight: 100;
+  font-size: 30px;
+}
+
+.bar{
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 50px;
+  background-image: url("{% static 'images/down.jpeg' %}"); 
+}
+#Fruit{
+background-color: #ffffff; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+#Veggie{
+background-color: #ffffff; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+#Drink{
+background-color: #ffffff; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+
+#Munchies{
+background-color: #ffffff; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+#Sweettooth{
+background-color: #ffffff; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+#Hyg{
+background-color: #ffffff; 
+padding: 20px; 
+border-radius: 10px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+
+#Fruit:hover img,
+#Veggie:hover img,
+#Drink:hover img,
+#Munchies:hover img,
+#Sweettooth:hover img,
+#Hyg:hover img {
+transform: scale(1.2); 
+transition: transform 0.3s ease; 
+}
+
+#Fruit,
+#Veggie,
+#Drink,
+#Munchies,
+#Sweettooth,
+#Hyg {
+background-color: #ffffff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+height: 250px;
+width: 150px;
+transition: box-shadow 0.3s ease; 
+}
+
+#Fruit:hover,
+#Veggie:hover,
+#Drink:hover,
+#Munchies:hover,
+#Sweettooth:hover,
+#Hyg:hover {
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ju{
+  border-radius: 20px;
+  position: absolute;
+  padding-left: 350px;
+  width: 30%;
+}
+
+.ext{
+  background-color: rgb(246, 244, 243);
+  padding: 20px; 
+  height: 560px;
+  /* width: 1479px; */
+  display: flex;
+  align-items: center; 
+}
+
+.extra{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bari{
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 50px;
+  padding-left: 400px;
+  width: 80%;
+}
+
+#Fruits{
+background-color: #a2c0cb; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+#Veggies{
+background-color: #c2a6c2; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+#Drinks{
+background-color: #a79cbb; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+height: 250px;
+width: 150px;
+} 
+
+#Fruits,
+#Veggies,
+#Drinks {
+  height: 500px;
+  width: 300px; 
+  padding: auto;
+}
+
+#Fruits img,
+#Veggies img,
+#Drinks img {
+  height: 300px; 
+  width: 300px; 
+}
+
+.space{
+  background-color: rgb(9, 8, 8);
+  height: 20px;
+  /* width: 1520px; */
+  display: flex;
+  align-items: center; 
+}
+
+.footi{
+  height: 400px;
+  
+}
+.foote{
+  height: 100px;
+}
+.hey{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#aliv{
+  background-image: url("{% static 'images/hie.jpeg' %}");
+padding: 20px; 
+border-radius: 50px; 
+height:300px;
+width: 200px;
+} 
+
+#nee{
+  background-image: url("{% static 'images/hie.jpeg' %}");
+padding: 20px; 
+border-radius: 50px; 
+height:300px;
+width: 200px;
+} 
+
+#mag{
+  background-image: url("{% static 'images/hie.jpeg' %}"); 
+padding: 20px; 
+border-radius: 50px; 
+height:300px;
+width: 200px;
+} 
+
+#moh{
+  background-image: url("{% static 'images/hie.jpeg' %}");
+padding: 20px; 
+border-radius: 50px; 
+height:300px;
+width: 200px;
+} 
+
+#aliv img,
+#nee img,
+#mag img,
+#moh img{
+border-radius: 50px;
+width: 150px;
+height: 200px;
+}
+
+#aliv h2,
+#nee h2,
+#mag h2,
+#moh h2{
+text-align: center;
+}
+ 
+.aloo {
+    background-color: rgb(131, 171, 140);
+    padding-top: 100px; 
+    padding-bottom: 50px; 
+    /* width: 1470px; */
+    height: 250px;
+    margin-top: -50px; 
+    padding-left: 50px;
+    bottom: 0;
+}
+
+.poo p, .swae p, .larry p{
+  color: #000000;
+  font-family: "Merriweather", serif;
+  font-size: 17px;
+  padding-right: 20px;
+}
+
+.poo {
+  display: flex;
+  justify-content: space-between; 
+  padding: 20px; 
+}
+
+.pooj,
+.swae,
+.larry {
+  flex: 1;
+}
+
+.larry a,
+.swae a{
+  text-decoration: none;
+}
+
+</style>
+<body>
+    <div class="top-bar">
+        <div class="brand">T-Mart</div>
+        <nav>
+            <ul>
+                <li><a href=""><i class="fas fa-home"></i> Home </a> </li>
+                <li><a href="{% url 'ab' %}"><i class="fas fa-info-circle"></i> About us </a> </li>
+                <li><a href="{% url 'lgn' %}"><i class="fa-solid fa-right-to-bracket"></i> Account </a> </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="top-part">
+      <div class="tp">
+        <h1>Anything you want, <br> Anywhere you want.</h1>
+        <div class="fru"> <img src="{% static 'images/hmm.png' %}" height="600px" width="600px"> </div>
+      </div>
+    </div>
+    <div class="space">
+      <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -LOGIN AND ORDER NOW- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+    </div>
+    <div class="bar">
+      <div id="Fruit">
+          <h2>FRUITS</h2>
+          <a href="{% url 'lgn' %}"><img id="fru" src="{% static 'images/orange.jpeg' %}" height="150px" width="150px"></a>
+      </div>
+      <div id="Veggie">
+          <h2>VEGGIES</h2>
+          <a href="{% url 'lgn' %}"><img id="veg" src="{% static 'images/patta.jpeg' %}" height="150px" width="150px"></a>
+      </div>
+      <div id="Drink">
+          <h2>DRINKS</h2>
+          <a href="{% url 'lgn' %}"><img id="drink" src="{% static 'images/frooti.jpeg' %}" height="150px" width="150px"></a>
+      </div>
+      <div id="Munchies">
+          <h2>SNACKS</h2>
+          <a href="{% url 'lgn' %}"><img id="munc" src="{% static 'images/Lays.jpeg' %}" height="150px" width="150px"></a>
+      </div>
+      <div id="Sweettooth">
+          <h2>SWEETS</h2>
+          <a href="{% url 'lgn' %}"><img id="st" src="{% static 'images/choc.jpeg' %}" height="150px" width="150px"></a>
+      </div>
+      <div id="Hyg">
+          <h2>HYGIENE</h2>
+          <a href="{% url 'lgn' %}"><img id="hyg" src="{% static 'images/hyg.jpeg' %}" height="150px" width="150px"></a>
+        </div>
+      </div>    
+    <div class="ext">
+      <div class="extra">
+        <div class="ju"> <img src="{% static 'images/ju.jpeg' %}" height="600px" width="400px"> </div>
+      </div>
+      <div class="bari">
+        <div id="Fruits">
+              <h2>Fresh and healthy organic fruits.</h2>
+              <a href="{% url 'lgn' %}"><img id="fru" src="{% static 'images/wm.jpeg' %}" height="150px" width="150px"></a>
+              <h2>50% off on first order</h2>
+          </div>
+          <div id="Veggies">
+              <h2>Freshly handpicked vegetables.</h2>
+              <a href="{% url 'lgn' %}"><img id="veg" src="{% static 'images/pu.jpeg' %}" height="150px" width="150px"></a>
+              <h2>20% off on onions</h2>
+          </div>
+          <div id="Drinks">
+              <h2>Healthy drinks available.</h2>
+              <a href="{% url 'lgn' %}"><img id="drink" src="{% static 'images/ul.jpeg' %}" height="150px" width="150px"></a>
+              <h2>Use code: SUMMERS</h2>
+          </div>
+      </div>
+      </div>
+      <div class="footi">
+        <div class="foote">
+          <h3 class="text-center">Meet our Team</h3>
+        </div>
+        <div class="hey">
+          <div id="aliv">
+              <h2><b>Aliviya</b></h2>
+              <img id="me" src="{% static 'images/me.jpeg' %}" height="150px" width="150px"></a>
+          </div>
+          <div id="nee">
+              <h2><b>Neehar</b></h2>
+              <img id="neee" src="{% static 'images/nee.jpeg' %}" height="150px" width="150px">
+          </div>
+          <div id="mag">
+              <h2><b>Meghana</b></h2>
+              <img id="magg" src="{% static 'images/maggie.jpeg' %}" height="150px" width="150px"></a>
+          </div>
+          <div id="moh">
+              <h2><b>Mohith</b></h2>
+              <img id="mohh" src="{% static 'images/mohith.jpeg' %}" height="150px" width="150px"></a>
+          </div>
+        </div>
+      </div>
+      <div class="aloo">
+      <div class="poo">
+        <div class="pooj">
+          <h5><b>T-MART</b></h5> 
+          <p>T-Mart is the biggest market of grocery products. <br>
+            Get your daily needs from our store. <br> <br>
+
+            <i class="fa-solid fa-store"></i> SRM University Food Court, Guntur, AP. <br>
+            <i class="fa-solid fa-envelope"></i> alivnee@email.com <br>
+            <i class="fa-solid fa-phone"></i> +91 123 4567890</p>
+        </div>
+        <div class="swae">
+          <h5><b>Company</b></h5>
+          <a href="{% url 'ab' %}"><p> About us <br> Terms and Conditions</p></a>
+        </div>
+        <div class="larry">
+          <h5><b>Categories</b></h5>
+          <a href="{% url 'lgn' %}"><p> Fruits <br> Vegetables <br> Drinks <br> Frozen foods <br> Stationary</p></a>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

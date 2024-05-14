@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heyyyyy</title>
+    <script src="https://kit.fontawesome.com/7297796a96.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'images/supermaket.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body{
+        background-color: rgb(201, 188, 164);
+        margin: 0;
+        padding: 0;
+    }
+    #side{
+        position: fixed;
+        padding-left: 800px;
+        padding-top: 0%;
+        margin: 0%;
+        top: 10px;
+    }
+    h1{
+        padding-left: 250px;
+        padding-top: 210px;
+        font-family: "Merriweather", serif;
+        font-weight: 900;
+        font-size: 50px;
+        animation: slide 3s ease forwards;
+    }
+    @keyframes slide{
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+    }
+    .container{
+        width: 69%;
+        position: fixed;
+        text-align: center;
+    }
+    .button{
+        background-color: #c43232;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 2px;
+    }
+
+</style>
+
+<body>
+    
+    <div class="C" id="Cbg">
+        <img id="side" src= "{% static 'images/strawberry.png' %}" height="850px" width="800px">
+    </div>
+    <h1>Welcome!! A new login <br>marks the starting of <br>a new day.</h1>
+    <div class="container">
+        <a href="{% url 'ct' %}"><button class="button">Wanna Visit Categories??</button></a>
+    </div>
+</body>
+</html>
